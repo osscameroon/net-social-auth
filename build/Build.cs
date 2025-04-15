@@ -16,7 +16,7 @@ using static Nuke.Common.Tools.Git.GitTasks;
 
 [GitHubActions("integration",
     GitHubActionsImage.UbuntuLatest,
-    AutoGenerate = false,
+    AutoGenerate = true,
     OnPushBranchesIgnore = [IHaveMainBranch.MainBranchName],
     FetchDepth = 0,
     InvokedTargets = [nameof(ICompile.Compile), nameof(IPack.Pack), nameof(IPushNugetPackages.Publish)],
@@ -36,7 +36,7 @@ using static Nuke.Common.Tools.Git.GitTasks;
         ])]
 [GitHubActions("delivery",
     GitHubActionsImage.UbuntuLatest,
-    AutoGenerate = false,
+    AutoGenerate = true,
     OnPushBranches = [IHaveMainBranch.MainBranchName],
     FetchDepth = 0,
     InvokedTargets = [nameof(ICompile.Compile), nameof(IPack.Pack), nameof(IPushNugetPackages.Publish)],
