@@ -77,7 +77,7 @@ public class Pipeline : EnhancedNukeBuild,
     [Required]
     [Solution]
     public Solution Solution;
-    
+
     ///<inheritdoc/>
     Solution IHaveSolution.Solution => Solution;
 
