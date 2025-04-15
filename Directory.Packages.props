@@ -1,0 +1,14 @@
+<Project>
+    <PropertyGroup>
+        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <PackageVersion Include="Candoumbe.Pipelines" Version="0.13.2" />
+        <PackageVersion Include="Nuke.Build" Version="9.0.4" />
+        <PackageVersion Include="Roslynator.Analyzers" Version="4.13.1">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+        </PackageVersion>
+    </ItemGroup>
+</Project>

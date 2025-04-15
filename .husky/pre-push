@@ -1,0 +1,6 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+dotnet husky run --group "pre-push"
+
+echo "Tests passed! Pushing code... 🚀"

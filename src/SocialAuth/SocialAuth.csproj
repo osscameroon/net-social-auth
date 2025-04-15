@@ -1,0 +1,6 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <ItemGroup>
+      <PackageReference Include="Candoumbe.Pipelines"/>
+      <PackageReference Include="Nuke.Build"/>
+    </ItemGroup>
+</Project>
