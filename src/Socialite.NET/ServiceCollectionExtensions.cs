@@ -27,9 +27,9 @@ public static class ServiceCollectionExtensions
             throw new ArgumentNullException(nameof(services));
         }
 
-        var options = new SocialiteOptions();
+        SocialiteOptions options = new SocialiteOptions();
         configureOptions?.Invoke(options);
-            
+
         // Required services
         services.AddHttpClient();
         services.AddMemoryCache();
@@ -39,14 +39,14 @@ public static class ServiceCollectionExtensions
             opt.Cookie.HttpOnly = true;
             opt.Cookie.IsEssential = true;
         });
-            
-        var builder = new SocialiteBuilder(services);
-        
+
+        SocialiteBuilder builder = new SocialiteBuilder(services);
+
         services.AddSingleton<ISocialiteBuilder>(builder);
 
         services.AddSingleton<SocialiteManager>(sp =>
         {
-            var manager = new SocialiteManager(sp, options.DefaultDriver);
+            SocialiteManager manager = new SocialiteManager(sp, options.DefaultDriver);
             var socialiteBuilder = sp.GetRequiredService<ISocialiteBuilder>();
             foreach (var registration in socialiteBuilder.DriverRegistrations)
             {
@@ -60,7 +60,7 @@ public static class ServiceCollectionExtensions
         return builder;
     }
 }
-    
+
 /// <summary>
 /// Options for Socialite
 /// </summary>
@@ -71,7 +71,7 @@ public class SocialiteOptions
     /// </summary>
     public string? DefaultDriver { get; set; }
 }
-    
+
 /// <summary>
 /// Interface for the Socialite builder
 /// </summary>
@@ -81,15 +81,15 @@ public interface ISocialiteBuilder
     /// ASP.NET Core services
     /// </summary>
     IServiceCollection Services { get; }
-    
+
     /// <summary>
     /// 
     /// </summary>
     IList<Action<SocialiteManager>> DriverRegistrations { get; }
-        
-    
+
+
 }
-    
+
 /// <summary>
 /// Builder for Socialite
 /// </summary>

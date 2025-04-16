@@ -35,7 +35,7 @@ namespace Socialite.NET.Providers.Google
             ScopeSeparator = " ";
             Scopes.AddRange(["openid", "profile", "email"]);
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the GoogleProvider with config
         /// </summary>
@@ -47,19 +47,19 @@ namespace Socialite.NET.Providers.Google
             : base(httpClient, options)
         {
         }
-        
+
         /// <inheritdoc />
         protected override string GetAuthUrl(string? state)
         {
             return BuildAuthUrlFromBase("https://accounts.google.com/o/oauth2/auth", state);
         }
-        
+
         /// <inheritdoc />
         protected override string GetTokenUrl()
         {
             return "https://www.googleapis.com/oauth2/v4/token";
         }
-        
+
         /// <inheritdoc />
         protected override async Task<Dictionary<string, object?>> GetUserByToken(string token)
         {
@@ -70,12 +70,12 @@ namespace Socialite.NET.Providers.Google
 
             try
             {
-                var request = new HttpRequestMessage(HttpMethod.Get, "https://www.googleapis.com/oauth2/v3/userinfo");
+                HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, "https://www.googleapis.com/oauth2/v3/userinfo");
                 request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
-                
+
                 var response = await HttpClient.SendAsync(request);
                 response.EnsureSuccessStatusCode();
-                
+
                 string content = await response.Content.ReadAsStringAsync();
                 return JsonDocument.Parse(content).RootElement.DeserializeToDict();
             }
@@ -84,7 +84,7 @@ namespace Socialite.NET.Providers.Google
                 throw new AuthenticationException("Error retrieving user information from Google", ex);
             }
         }
-        
+
         /// <inheritdoc />
         protected override IUser MapUserToObject(Dictionary<string, object?> user)
         {
@@ -93,7 +93,7 @@ namespace Socialite.NET.Providers.Google
             user.TryGetValue("name", out object? name);
             user.TryGetValue("email", out object? email);
             user.TryGetValue("picture", out object? avatar);
-            
+
             return new User()
                 .SetRaw(user)
                 .Map(new Dictionary<string, object?>
