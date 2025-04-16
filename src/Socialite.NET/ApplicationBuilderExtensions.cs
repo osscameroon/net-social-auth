@@ -21,7 +21,7 @@ public static class ApplicationBuilderExtensions
         // Add session and auth middleware
         app.UseSession();
         app.UseAuthentication();
-            
+
         return app;
     }
 }

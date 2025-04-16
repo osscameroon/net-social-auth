@@ -14,7 +14,7 @@ public interface ISocialite
     /// <returns>Provider instance</returns>
     /// <exception cref="InvalidOperationException">Thrown when no driver is specified and no default driver is configured</exception>
     IProvider GetProvider(string? driver = null);
-        
+
     /// <summary>
     /// Builds an OAuth provider with custom configuration
     /// </summary>
@@ -24,7 +24,7 @@ public interface ISocialite
     /// <exception cref="ArgumentNullException">Thrown when config is null</exception>
     /// <exception cref="ArgumentException">Thrown when required config properties are missing</exception>
     IProvider BuildProvider(string provider, ProviderConfig config);
-        
+
     /// <summary>
     /// Adds a custom driver
     /// </summary>

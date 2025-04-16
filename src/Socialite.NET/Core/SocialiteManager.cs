@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using Microsoft.Extensions.DependencyInjection;
-using Socialite.NET.Providers.Google;
 using Socialite.NET.Abstractions;
+using Socialite.NET.Providers.Google;
 
 namespace Socialite.NET.Core;
 
@@ -16,9 +16,9 @@ public class SocialiteManager : ISocialite
     private readonly IServiceProvider _services;
     private readonly string? _defaultDriver;
     private readonly Dictionary<string, Type> _drivers = new(StringComparer.OrdinalIgnoreCase);
-    private readonly Dictionary<string, Func<IServiceProvider, IProvider>> _customDriverFactories = 
+    private readonly Dictionary<string, Func<IServiceProvider, IProvider>> _customDriverFactories =
         new(StringComparer.OrdinalIgnoreCase);
-        
+
     /// <summary>
     /// Initializes a new instance of the SocialiteManager
     /// </summary>
@@ -30,48 +30,45 @@ public class SocialiteManager : ISocialite
         _services = services ?? throw new ArgumentNullException(nameof(services));
         _defaultDriver = defaultDriver;
     }
-        
+
     /// <inheritdoc />
     public IProvider GetProvider(string? driver = null)
     {
-        var pr = (IProvider) _services.GetRequiredService(typeof(IProvider));
+        IProvider pr = (IProvider)_services.GetRequiredService(typeof(IProvider));
         driver ??= _defaultDriver;
-            
+
         if (string.IsNullOrEmpty(driver))
         {
             throw new InvalidOperationException("No Socialite driver was specified.");
         }
-            
+
         // Check custom drivers first
         if (_customDriverFactories.TryGetValue(driver, out Func<IServiceProvider, IProvider>? factory))
         {
-            IProvider? provider = factory(_services);
-            if (provider == null)
-            {
-                throw new InvalidOperationException($"Factory for driver [{driver}] returned null.");
-            }
+            IProvider? provider = factory(_services) ?? throw new InvalidOperationException($"Factory for driver [{driver}] returned null.");
             return provider;
         }
-            
+
         // Then check registered drivers
         if (!_drivers.TryGetValue(driver, out Type? providerType))
         {
             throw new InvalidOperationException($"Driver [{driver}] not supported.");
         }
-        
+
         //var pr = (IProvider) _services.GetRequiredService(typeof(IProvider));
 
-        try {
-            return _services.GetRequiredService(providerType) as IProvider 
+        try
+        {
+            return _services.GetRequiredService(providerType) as IProvider
                    ?? throw new InvalidOperationException($"Could not cast provider of type {providerType.Name} to IProvider.");
         }
-        catch (Exception ex) 
+        catch (Exception ex)
         {
             throw new InvalidOperationException($"Could not resolve provider of type {providerType.Name}.", ex);
         }
 
     }
-        
+
     /// <inheritdoc />
     public IProvider BuildProvider(string provider, ProviderConfig config)
     {
@@ -88,30 +85,20 @@ public class SocialiteManager : ISocialite
         config.Validate();
 
         using HttpClient httpClient = _services.GetRequiredService<IHttpClientFactory>().CreateClient();
-            
-        // Try to resolve provider type
-        Type? providerType = Type.GetType($"Socialite.NET.Providers.{provider}.{provider}Provider, Socialite.NET.Providers.{provider}");
-        if (providerType == null)
-        {
-            throw new InvalidOperationException($"Provider [{provider}] could not be resolved.");
-        }
 
+        // Try to resolve provider type
+        Type? providerType = Type.GetType($"Socialite.NET.Providers.{provider}.{provider}Provider, Socialite.NET.Providers.{provider}") ?? throw new InvalidOperationException($"Provider [{provider}] could not be resolved.");
         IProvider? providerInstance = Activator.CreateInstance(
             providerType,
             httpClient,
             config.ClientId,
             config.ClientSecret,
-            config.RedirectUrl) as IProvider;
-                
-        if (providerInstance == null)
-        {
-            throw new InvalidOperationException($"Failed to create provider [{provider}].");
-        }
+            config.RedirectUrl) as IProvider ?? throw new InvalidOperationException($"Failed to create provider [{provider}].");
 
         // Configure instance
         providerInstance = providerInstance
             .SetScopes(config.Scopes.ToArray());
-                
+
         if (config.Stateless)
         {
             providerInstance = providerInstance.Stateless();
@@ -129,7 +116,7 @@ public class SocialiteManager : ISocialite
 
         return providerInstance;
     }
-        
+
     /// <inheritdoc />
     public ISocialite Extend(string driver, Func<IServiceProvider, IProvider> factory)
     {
@@ -141,10 +128,10 @@ public class SocialiteManager : ISocialite
         ArgumentNullException.ThrowIfNull(factory);
 
         _customDriverFactories[driver] = factory;
-            
+
         return this;
     }
-        
+
     /// <summary>
     /// Registers a provider driver
     /// </summary>

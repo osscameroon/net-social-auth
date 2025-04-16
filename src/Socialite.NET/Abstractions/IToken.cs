@@ -11,17 +11,17 @@ public interface IToken
     /// Access token
     /// </summary>
     string AccessToken { get; }
-        
+
     /// <summary>
     /// Refresh token
     /// </summary>
     string? RefreshToken { get; }
-        
+
     /// <summary>
     /// Token lifetime in seconds
     /// </summary>
     int ExpiresIn { get; }
-        
+
     /// <summary>
     /// Approved scopes
     /// </summary>

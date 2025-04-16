@@ -15,16 +15,16 @@ internal static class JsonExtensions
     /// <returns>Dictionary representation</returns>
     public static Dictionary<string, object?> DeserializeToDict(this JsonElement element)
     {
-        var dict = new Dictionary<string, object?>();
-            
+        Dictionary<string, object?> dict = new Dictionary<string, object?>();
+
         foreach (var property in element.EnumerateObject())
         {
             dict[property.Name] = ConvertJsonValue(property.Value);
         }
-            
+
         return dict;
     }
-        
+
     /// <summary>
     /// Converts a JSON value to the appropriate .NET type
     /// </summary>
@@ -44,7 +44,7 @@ internal static class JsonExtensions
             _ => null
         };
     }
-        
+
     /// <summary>
     /// Converts a JSON array to a list
     /// </summary>
@@ -52,8 +52,8 @@ internal static class JsonExtensions
     /// <returns>List of converted values</returns>
     private static List<object?> ConvertJsonArray(JsonElement array)
     {
-        var list = new List<object?>();
-        
+        List<object?> list = new List<object?>();
+
         foreach (var item in array.EnumerateArray())
         {
             list.Add(ConvertJsonValue(item));
