@@ -6,8 +6,16 @@
         <ImplicitUsings>disable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <Authors>Aristide Herve Mbassi</Authors>
+        <Company>OSS Cameroon</Company>
+        <PackageId>Socialite.NET</PackageId>
+        <Description>ASP.NET Core  wrapper around OAuth 2 libraries.</Description>
+        <PackageTags>oauth;authentication;socialite;aspnetcore;facebook;google;github</PackageTags>
+        <PackageProjectUrl>https://github.com/osscameroon/net-social-auth</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/osscameroon/net-social-auth</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageIcon>icon.png</PackageIcon>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
     </PropertyGroup>
     <PropertyGroup>
         <IsTestProject>false</IsTestProject>
@@ -35,6 +43,7 @@
     </Choose>
     <ItemGroup Condition="'$(IsTestProject)' == 'false' and '$(MSBuildProjectName)' != '_build'">
         <None Include="..\..\README.md" Pack="true" PackagePath="\"/>
+        <None Include="..\..\assets\icon.png" Pack="true" PackagePath="\"/>
     </ItemGroup>
     
 </Project>

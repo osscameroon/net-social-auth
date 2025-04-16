@@ -5,6 +5,9 @@
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
+      <PackageReference Include="Microsoft.AspNetCore.Http" />
+      <PackageReference Include="Microsoft.AspNetCore.Session" />
       <PackageReference Include="Nuke.Build"/>
+      <FrameworkReference Include="Microsoft.AspNetCore.App" />
     </ItemGroup>
 </Project>
