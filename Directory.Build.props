@@ -1,6 +1,6 @@
 <Project>
     <PropertyGroup>
-        <TargetFrameworks>.net9.0;net8.0</TargetFrameworks>
+        <TargetFramework>.net9.0</TargetFramework>
         <LangVersion>latest</LangVersion>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
         <ImplicitUsings>disable</ImplicitUsings>
