@@ -23,7 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 		renovate.json = renovate.json
 		CHANGELOG.md = CHANGELOG.md
 		README.md = README.md
-		LICENSE = LICENSE
+		LICENSE.md = LICENSE.md
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
 	EndProjectSection
