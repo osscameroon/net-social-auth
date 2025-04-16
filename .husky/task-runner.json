@@ -9,7 +9,8 @@
     {
       "name": "format-code",
       "command": "dotnet",
-      "args": ["format"],
+      "args": ["format", "--include", "${staged}"],
+      "include": ["**/*.cs"],
       "group": "pre-commit"
     },
     {
