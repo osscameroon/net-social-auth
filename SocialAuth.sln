@@ -28,7 +28,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialAuth", "src\SocialAuth\SocialAuth.csproj", "{61830B02-AF4F-4FFC-A503-CDD47F2D2B2C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Socialite.NET", "src\Socialite.NET\Socialite.NET.csproj", "{61830B02-AF4F-4FFC-A503-CDD47F2D2B2C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "build\_build.csproj", "{6EB0C357-4110-4E36-902A-872D82F01BD7}"
 EndProject
