@@ -1,13 +1,12 @@
-<p align="left"><img width="250" height="250" src="/assets/logo-color.png" alt="Logo Socialite .NET"></p>
 
+Socialite .NET
+=======
 
 [![GitHub Workflow Status (main)](https://img.shields.io/github/actions/workflow/status/osscameroon/net-social-auth/delivery.yml?branch=main&label=main)](https://github.com/osscameroon/net-social-auth/actions/workflows/delivery.yml?query=branch%3Amain)
 [![GitHub Workflow Status (develop)](https://img.shields.io/github/actions/workflow/status/osscameroon/net-social-auth/integration.yml?branch=develop&label=develop)](https://github.com/osscameroon/net-social-auth/actions/workflows/integration.yml?query=branch%3Adevelop)
 [![GitHub raw issues](https://img.shields.io/github/issues-raw/osscameroon/net-social-auth)](https://github.com/net-social-auth/net-social-auth/issues)
 
 
-<br/>
-<br/>
 
 > [!IMPORTANT]
 > The project is in active development. If you want to use it in production, please make sure that the components match your needs, or replace them.
