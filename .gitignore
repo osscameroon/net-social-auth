@@ -454,3 +454,4 @@ $RECYCLE.BIN/
 !.vscode/extensions.json
 /.nuke/temp
 /.qodo/indexes.sqlite
+src/SocialiteNET.Web
