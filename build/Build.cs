@@ -9,6 +9,7 @@ using Nuke.Common;
 using Nuke.Common.CI.GitHubActions;
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
+using Nuke.Common.Tooling;
 using Nuke.Common.Tools.DotNet;
 using Nuke.Common.Tools.GitHub;
 
@@ -114,6 +115,9 @@ public class Pipeline : EnhancedNukeBuild,
             source: new Uri($"https://nuget.pkg.github.com/{ this.Get<IHaveGitHubRepository>().GitRepository.GetGitHubOwner() }/index.json"),
             canBeUsed: () => this is ICreateGithubRelease { GitHubToken: not null })
     ];
+
+    Configure<DotNetNuGetPushSettings> IPushNugetPackages.PublishSettings => _ => _.EnableSkipDuplicate();
+
 
     ///<inheritdoc/>
     ValueTask IGitFlow.FinishRelease()
