@@ -9,8 +9,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [vNext] - YYYY-MM-DD
 ### Added
 - Placeholder for upcoming changes
-
-
-## [Unreleased]
-
-- Initial release
