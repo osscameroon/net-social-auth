@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Extensions.DependencyInjection;
-using Socialite.NET.Abstractions;
-using Socialite.NET.Core;
+using SocialiteNET.Abstractions;
+using SocialiteNET.Core;
 
-namespace Socialite.NET;
+namespace SocialiteNET;
 
 /// <summary>
 /// Extensions for configuring Socialite in ASP.NET Core
@@ -22,10 +22,7 @@ public static class ServiceCollectionExtensions
         this IServiceCollection services,
         Action<SocialiteOptions>? configureOptions = null)
     {
-        if (services == null)
-        {
-            throw new ArgumentNullException(nameof(services));
-        }
+        ArgumentNullException.ThrowIfNull(services);
 
         SocialiteOptions options = new SocialiteOptions();
         configureOptions?.Invoke(options);
@@ -109,7 +106,8 @@ public class SocialiteBuilder : ISocialiteBuilder
     /// <param name="services">Service collection</param>
     /// <exception cref="ArgumentNullException">Thrown when parameters are null</exception>
     public SocialiteBuilder(IServiceCollection services)
+
     {
-        Services = services ?? throw new ArgumentNullException(nameof(services));
+        this.Services = services ?? throw new ArgumentNullException(nameof(services));
     }
 }

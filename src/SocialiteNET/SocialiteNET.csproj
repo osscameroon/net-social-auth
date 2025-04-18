@@ -1,4 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+      <PackageId>SocialiteNET</PackageId>
+    </PropertyGroup>
     <ItemGroup>
       <PackageReference Include="Candoumbe.Pipelines"/>
       <PackageReference Include="GitVersion.MsBuild">

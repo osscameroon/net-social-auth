@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Text.Json;
 
-namespace Socialite.NET;
+namespace SocialiteNET;
 
 /// <summary>
 /// Extensions for working with JSON

@@ -1,7 +1,7 @@
 using System;
 using Microsoft.AspNetCore.Builder;
 
-namespace Socialite.NET;
+namespace SocialiteNET;
 
 /// <summary>
 /// Extensions for the HTTP pipeline
