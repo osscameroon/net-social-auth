@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Socialite.NET.Abstractions;
+using SocialiteNET.Abstractions;
 
-namespace Socialite.NET.Core;
+namespace SocialiteNET.Core;
 
 /// <summary>
 /// Default implementation of OAuth tokens
@@ -41,9 +41,9 @@ public class Token : IToken
             throw new ArgumentNullException(nameof(accessToken));
         }
 
-        AccessToken = accessToken;
-        RefreshToken = refreshToken;
-        ExpiresIn = expiresIn;
-        ApprovedScopes = approvedScopes?.ToArray() ?? [];
+        this.AccessToken = accessToken;
+        this.RefreshToken = refreshToken;
+        this.ExpiresIn = expiresIn;
+        this.ApprovedScopes = approvedScopes?.ToArray() ?? [];
     }
 }

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Socialite.NET.Abstractions;
+namespace SocialiteNET.Abstractions;
 
 /// <summary>
 /// Interface for an OAuth provider user

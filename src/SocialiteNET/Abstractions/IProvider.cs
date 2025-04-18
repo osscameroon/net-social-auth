@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 
-namespace Socialite.NET.Abstractions;
+namespace SocialiteNET.Abstractions;
 
 /// <summary>
 /// Interface for OAuth providers

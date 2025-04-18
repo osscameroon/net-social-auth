@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Socialite.NET.Abstractions;
+namespace SocialiteNET.Abstractions;
 
 /// <summary>
 /// Configuration for an OAuth provider
@@ -53,19 +53,19 @@ public class ProviderConfig
     /// <exception cref="System.ArgumentException">Thrown when required properties are missing</exception>
     public virtual void Validate()
     {
-        if (string.IsNullOrWhiteSpace(ClientId))
+        if (string.IsNullOrWhiteSpace(this.ClientId))
         {
-            throw new System.ArgumentException("ClientId is required", nameof(ClientId));
+            throw new System.ArgumentException("ClientId is required", nameof(this.ClientId));
         }
 
-        if (string.IsNullOrWhiteSpace(ClientSecret))
+        if (string.IsNullOrWhiteSpace(this.ClientSecret))
         {
-            throw new System.ArgumentException("ClientSecret is required", nameof(ClientSecret));
+            throw new System.ArgumentException("ClientSecret is required", nameof(this.ClientSecret));
         }
 
-        if (string.IsNullOrWhiteSpace(RedirectUrl))
+        if (string.IsNullOrWhiteSpace(this.RedirectUrl))
         {
-            throw new System.ArgumentException("RedirectUrl is required", nameof(RedirectUrl));
+            throw new System.ArgumentException("RedirectUrl is required", nameof(this.RedirectUrl));
         }
     }
 }

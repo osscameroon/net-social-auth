@@ -28,9 +28,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Socialite.NET", "src\Socialite.NET\Socialite.NET.csproj", "{61830B02-AF4F-4FFC-A503-CDD47F2D2B2C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialiteNET", "src\SocialiteNET\SocialiteNET.csproj", "{61830B02-AF4F-4FFC-A503-CDD47F2D2B2C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "build\_build.csproj", "{6EB0C357-4110-4E36-902A-872D82F01BD7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialiteNET.UnitTests", "tests\SocialiteNET.UnitTests\SocialiteNET.UnitTests.csproj", "{8FFCAE51-1BED-4C12-89EF-93F879979ACC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{61830B02-AF4F-4FFC-A503-CDD47F2D2B2C} = {2E9E9DDA-0F6C-4B39-92BE-1929F76C807F}
 		{6EB0C357-4110-4E36-902A-872D82F01BD7} = {87B0416E-86C0-49DC-8C6B-A72ED42BBA32}
+		{8FFCAE51-1BED-4C12-89EF-93F879979ACC} = {2E9E9DDA-0F6C-4B39-92BE-1929F76C807F}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{6EB0C357-4110-4E36-902A-872D82F01BD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -51,5 +54,9 @@ Global
 		{61830B02-AF4F-4FFC-A503-CDD47F2D2B2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61830B02-AF4F-4FFC-A503-CDD47F2D2B2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61830B02-AF4F-4FFC-A503-CDD47F2D2B2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FFCAE51-1BED-4C12-89EF-93F879979ACC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FFCAE51-1BED-4C12-89EF-93F879979ACC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FFCAE51-1BED-4C12-89EF-93F879979ACC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FFCAE51-1BED-4C12-89EF-93F879979ACC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
