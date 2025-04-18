@@ -2,6 +2,7 @@ mode: ContinuousDeployment
 branches:
     feature:
         regex: "^feature(s)?[/-]"
+        label: 'beta'
     coldfix:
         regex: "^coldfix(es)?[/-]"
         mode: ContinuousDelivery
