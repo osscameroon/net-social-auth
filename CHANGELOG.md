@@ -8,9 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [vNext] - YYYY-MM-DD
 
+## [0.2.0] / 2025-04-18
+###  🚀 New features
+- Added authentication with GitHub provider ([#5](https://github.com/osscameroon/socialite.net/issues/5))
+
 ## [0.1.0] / 2025-04-18
 ###  🚀 New features
 - Added authentication with Google provider ([#11](https://github.com/osscameroon/socialite.net/issues/11))
 
-[vNext]: https://github.com/osscameroon/socialite.net/compare/0.1.0...HEAD
+[vNext]: https://github.com/osscameroon/socialite.net/compare/0.2.0...HEAD
+[0.2.0]: https://github.com/osscameroon/socialite.net/compare/0.1.0...0.2.0
 [0.1.0]: https://github.com/osscameroon/socialite.net/tree/0.1.0
