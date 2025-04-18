@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using Socialite.NET.Abstractions;
+using SocialiteNET.Abstractions;
 
-namespace Socialite.NET.Core;
+namespace SocialiteNET.Core;
 
 /// <summary>
 /// Default implementation of OAuth user
@@ -48,7 +48,7 @@ public class User : IUser
     /// <inheritdoc />
     public virtual IUser SetRaw(IDictionary<string, object?> user)
     {
-        UserData = user ?? new Dictionary<string, object?>();
+        this.UserData = user ?? new Dictionary<string, object?>();
         return this;
     }
 
@@ -57,9 +57,9 @@ public class User : IUser
     {
         ArgumentNullException.ThrowIfNull(attributes);
 
-        foreach (var (key, value) in attributes)
+        foreach ((string key, object? value) in attributes)
         {
-            var property = GetType().GetProperty(key);
+            var property = this.GetType().GetProperty(key);
             if (property != null && property.CanWrite)
             {
                 property.SetValue(this, value);
@@ -77,28 +77,28 @@ public class User : IUser
             throw new ArgumentNullException(nameof(token));
         }
 
-        Token = token;
+        this.Token = token;
         return this;
     }
 
     /// <inheritdoc />
     public IUser SetRefreshToken(string? refreshToken)
     {
-        RefreshToken = refreshToken;
+        this.RefreshToken = refreshToken;
         return this;
     }
 
     /// <inheritdoc />
     public IUser SetExpiresIn(int expiresIn)
     {
-        ExpiresIn = expiresIn;
+        this.ExpiresIn = expiresIn;
         return this;
     }
 
     /// <inheritdoc />
     public IUser SetApprovedScopes(IEnumerable<string> scopes)
     {
-        ApprovedScopes = scopes ?? Array.Empty<string>();
+        this.ApprovedScopes = scopes ?? Array.Empty<string>();
         return this;
     }
 }

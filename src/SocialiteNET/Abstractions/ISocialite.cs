@@ -1,6 +1,6 @@
 using System;
 
-namespace Socialite.NET.Abstractions;
+namespace SocialiteNET.Abstractions;
 
 /// <summary>
 /// Main interface 

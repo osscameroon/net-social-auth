@@ -1,6 +1,6 @@
 using System;
 
-namespace Socialite.NET.Abstractions.Exceptions;
+namespace SocialiteNET.Abstractions.Exceptions;
 
 /// <summary>
 /// Exception thrown when OAuth state is invalid

@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Options;
-using Socialite.NET.Abstractions;
-using Socialite.NET.Abstractions.Exceptions;
+using SocialiteNET.Abstractions;
+using SocialiteNET.Abstractions.Exceptions;
 
-namespace Socialite.NET.Core;
+namespace SocialiteNET.Core;
 
 /// <summary>
 /// Base class for OAuth 2.0 providers
@@ -95,10 +95,10 @@ public abstract class AbstractProvider : IProvider
         string redirectUrl,
         Dictionary<string, object>? options = null)
     {
-        HttpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
-        ClientId = !string.IsNullOrEmpty(clientId) ? clientId : throw new ArgumentNullException(nameof(clientId));
-        ClientSecret = !string.IsNullOrEmpty(clientSecret) ? clientSecret : throw new ArgumentNullException(nameof(clientSecret));
-        RedirectUrl = !string.IsNullOrEmpty(redirectUrl) ? redirectUrl : throw new ArgumentNullException(nameof(redirectUrl));
+        this.HttpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+        this.ClientId = !string.IsNullOrEmpty(clientId) ? clientId : throw new ArgumentNullException(nameof(clientId));
+        this.ClientSecret = !string.IsNullOrEmpty(clientSecret) ? clientSecret : throw new ArgumentNullException(nameof(clientSecret));
+        this.RedirectUrl = !string.IsNullOrEmpty(redirectUrl) ? redirectUrl : throw new ArgumentNullException(nameof(redirectUrl));
 
         this.ConfigureHttpClient();
     }
@@ -118,15 +118,15 @@ public abstract class AbstractProvider : IProvider
         ProviderConfig config = options.Value;
         config.Validate();
 
-        HttpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
-        ClientId = config.ClientId;
-        ClientSecret = config.ClientSecret;
-        RedirectUrl = config.RedirectUrl;
-        Scopes = new List<string>(config.Scopes);
-        ScopeSeparator = config.ScopeSeparator;
-        Parameters = new Dictionary<string, string>(config.Parameters);
-        IsStatelessMode = config.Stateless;
-        UsesPkce = config.UsesPkce;
+        this.HttpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+        this.ClientId = config.ClientId;
+        this.ClientSecret = config.ClientSecret;
+        this.RedirectUrl = config.RedirectUrl;
+        this.Scopes = new List<string>(config.Scopes);
+        this.ScopeSeparator = config.ScopeSeparator;
+        this.Parameters = new Dictionary<string, string>(config.Parameters);
+        this.IsStatelessMode = config.Stateless;
+        this.UsesPkce = config.UsesPkce;
 
         this.ConfigureHttpClient();
     }
@@ -137,7 +137,7 @@ public abstract class AbstractProvider : IProvider
     private void ConfigureHttpClient()
     {
         // Basic HTTP client configuration
-        HttpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        this.HttpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
     }
 
     /// <summary>
@@ -255,10 +255,7 @@ public abstract class AbstractProvider : IProvider
     /// <inheritdoc />
     public virtual async Task<IUser> GetUserAsync(HttpContext context)
     {
-        if (context == null)
-        {
-            throw new ArgumentNullException(nameof(context));
-        }
+        ArgumentNullException.ThrowIfNull(context);
 
         if (this.CachedUser != null)
         {
