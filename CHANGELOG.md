@@ -7,5 +7,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 ## [vNext] - YYYY-MM-DD
-### Added
-- Placeholder for upcoming changes
+###  🚀 New features
+- Added authentication with GitHub provider ([#11](https://github.com/osscameroon/socialite.net/issues/11))
