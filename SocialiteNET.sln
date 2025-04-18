@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2E9E9DDA-0F6C-4B39-92BE-1929F76C807F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".config", ".config", "{D7596C7C-E022-45D8-987A-EA894DEDD6DD}"
+	ProjectSection(SolutionItems) = preProject
+		.config\dotnet-tools.json = .config\dotnet-tools.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{87B0416E-86C0-49DC-8C6B-A72ED42BBA32}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{14D8E16C-7E72-41C4-8BAF-7460F4468BEA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{B848D093-0E58-49EE-9058-800A8CADB38A}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+		GitVersion.yml = GitVersion.yml
+		Directory.Packages.props = Directory.Packages.props
+		Directory.Build.props = Directory.Build.props
+		renovate.json = renovate.json
+		CHANGELOG.md = CHANGELOG.md
+		README.md = README.md
+		LICENSE.md = LICENSE.md
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Socialite.NET", "src\Socialite.NET\Socialite.NET.csproj", "{61830B02-AF4F-4FFC-A503-CDD47F2D2B2C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "build\_build.csproj", "{6EB0C357-4110-4E36-902A-872D82F01BD7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{61830B02-AF4F-4FFC-A503-CDD47F2D2B2C} = {2E9E9DDA-0F6C-4B39-92BE-1929F76C807F}
+		{6EB0C357-4110-4E36-902A-872D82F01BD7} = {87B0416E-86C0-49DC-8C6B-A72ED42BBA32}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6EB0C357-4110-4E36-902A-872D82F01BD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EB0C357-4110-4E36-902A-872D82F01BD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61830B02-AF4F-4FFC-A503-CDD47F2D2B2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61830B02-AF4F-4FFC-A503-CDD47F2D2B2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61830B02-AF4F-4FFC-A503-CDD47F2D2B2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61830B02-AF4F-4FFC-A503-CDD47F2D2B2C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

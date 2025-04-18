@@ -1,0 +1,52 @@
+<Project>
+    <PropertyGroup>
+        <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+        <LangVersion>latest</LangVersion>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <ImplicitUsings>disable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <Authors>Aristide Herve Mbassi</Authors>
+        <Company>OSS Cameroon</Company>
+        <PackageId>Socialite.NET</PackageId>
+        <Description>
+            OAuth authentication with Bitbucket, Facebook, GitHub, GitLab, Google, LinkedIn, Slack, Twitch, and X becomes expressive and fluid with Socialite. 
+            It manages nearly every boilerplate social authentication code that you are afraid to write.
+        </Description>
+        <PackageTags>oauth;authentication;socialite;aspnetcore;facebook;google;github;social auth;identity</PackageTags>
+        <PackageProjectUrl>https://github.com/osscameroon/net-social-auth</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/osscameroon/net-social-auth</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageIcon>icon.png</PackageIcon>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    </PropertyGroup>
+    <PropertyGroup>
+        <IsTestProject>false</IsTestProject>
+        <IsTestProject Condition="$(MSBuildProjectName.EndsWith('Tests'))">true</IsTestProject>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(IsTestProject)' == 'false'">
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <!-- Publish the repository URL in the built .nupkg (in the NuSpec <Repository> element) -->
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <!-- Embed source files that are not tracked by the source control manager in the PDB -->
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <!-- Recommended: Embed symbols containing Source Link in the main file (exe/dll) -->
+        <DebugType>embedded</DebugType>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+    </PropertyGroup>
+    <Choose>
+        <When Condition="'$(GITHUB_ACTIONS)' == 'true'">
+            <PropertyGroup>
+                <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+            </PropertyGroup>
+            <ItemGroup Condition="'$(IsTestProject)' == 'false'">
+                <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" Condition="'$(GITHUB_ACTIONS)' == 'true'"/>
+            </ItemGroup>
+        </When>
+    </Choose>
+    <ItemGroup Condition="'$(IsTestProject)' == 'false' and '$(MSBuildProjectName)' != '_build'">
+        <None Include="..\..\README.md" Pack="true" PackagePath="\"/>
+        <None Include="..\..\assets\icon.png" Pack="true" PackagePath="\"/>
+    </ItemGroup>
+    
+</Project>

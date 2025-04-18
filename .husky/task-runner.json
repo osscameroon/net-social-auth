@@ -1,0 +1,23 @@
+{
+  "$schema": "https://alirezanet.github.io/Husky.Net/schema.json",
+  "tasks": [
+    {
+      "name": "commit-message-linter",
+      "command": "dotnet",
+      "args": ["husky", "exec", ".husky/csx/commit-lint.csx", "--args", "${args}"]
+    },
+    {
+      "name": "format-code",
+      "command": "dotnet",
+      "args": ["format", "--include", "${staged}"],
+      "include": ["**/*.cs"],
+      "group": "pre-commit"
+    },
+    {
+      "name": "run-tests",
+      "command": "dotnet",
+      "args": ["test"],
+      "group": "pre-push"
+    }
+  ]
+}
