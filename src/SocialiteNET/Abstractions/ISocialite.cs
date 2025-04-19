@@ -23,7 +23,17 @@ public interface ISocialite
     /// <returns>Provider instance</returns>
     /// <exception cref="ArgumentNullException">Thrown when config is null</exception>
     /// <exception cref="ArgumentException">Thrown when required config properties are missing</exception>
-    IProvider BuildProvider(string provider, ProviderConfig config);
+    [Obsolete("Please use the GetProvider(ProviderEnum provider, ProviderConfig config) method")] IProvider BuildProvider(string provider, ProviderConfig config);
+
+    /// <summary>
+    /// Builds an OAuth provider with custom configuration
+    /// </summary>
+    /// <param name="provider">Provider type</param>
+    /// <param name="config">Provider configuration</param>
+    /// <returns>Provider instance</returns>
+    /// <exception cref="ArgumentNullException">Thrown when config is null</exception>
+    /// <exception cref="ArgumentException">Thrown when required config properties are missing</exception>
+    IProvider BuildProvider(ProviderEnum provider, ProviderConfig config);
 
     /// <summary>
     /// Adds a custom driver
