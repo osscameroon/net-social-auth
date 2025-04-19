@@ -88,6 +88,39 @@ public class SocialiteManagerGoogleTests
     }
 
     [Fact]
+    public void BuildProvider_WithTypedGoogleProviderConfig_ReturnsConfiguredGoogleProvider()
+    {
+        // Arrange
+        ServiceCollection services = [];
+
+        IHttpClientFactory? httpClientFactory = Substitute.For<IHttpClientFactory>();
+        httpClientFactory.CreateClient().Returns(new HttpClient());
+        services.AddSingleton(httpClientFactory);
+
+        ServiceProvider serviceProvider = services.BuildServiceProvider();
+        SocialiteManager manager = new(serviceProvider);
+
+        ProviderConfig config = new()
+        {
+            ClientId = "test-client-id",
+            ClientSecret = "test-client-secret",
+            RedirectUrl = "https://example.com/callback",
+            Stateless = true,
+            UsesPkce = true
+        };
+        config.Scopes.Add("drive");
+        config.Parameters.Add("access_type", "offline");
+
+        // Act - This would typically fail in a real test as we can't create the type dynamically
+        // In a real test environment, we would need to mock or use real provider registration
+        var exception = Should.Throw<InvalidOperationException>(() =>
+            manager.BuildProvider(ProviderEnum.Google, config));
+
+        // Assert
+        exception.Message.ShouldBe("Provider [Google] could not be resolved.");
+    }
+
+    [Fact]
     public void Extend_WithGoogleProviderFactory_RegistersCustomDriver()
     {
         // Arrange

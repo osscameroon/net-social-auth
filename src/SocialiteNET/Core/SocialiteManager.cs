@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net.Http;
 using Microsoft.Extensions.DependencyInjection;
 using SocialiteNET.Abstractions;
+using SocialiteNET.Providers.Github;
+using SocialiteNET.Providers.Google;
 
 namespace SocialiteNET.Core;
 
@@ -105,6 +107,71 @@ public class SocialiteManager : ISocialite
         }
 
         return providerInstance;
+    }
+
+    /// <inheritdoc />
+    public IProvider BuildProvider(ProviderEnum provider, ProviderConfig config)
+    {
+        ArgumentNullException.ThrowIfNull(config);
+
+        config.Validate();
+
+        using HttpClient httpClient = this.services.GetRequiredService<IHttpClientFactory>().CreateClient();
+
+        switch (provider)
+        {
+            case ProviderEnum.Google:
+                GoogleProvider googleProvider = new GoogleProvider(
+                    httpClient,
+                    config.ClientId,
+                    config.ClientSecret,
+                    config.RedirectUrl
+                );
+
+                if (config.Stateless)
+                {
+                    googleProvider.Stateless();
+                }
+
+                if (config.UsesPkce)
+                {
+                    googleProvider.WithPkce();
+                }
+
+                if (config.Parameters.Count > 0)
+                {
+                    googleProvider.With(config.Parameters);
+                }
+
+                return googleProvider;
+
+            case ProviderEnum.Github:
+                GitHubProvider githubProvider = new GitHubProvider(
+                    httpClient,
+                    config.ClientId,
+                    config.ClientSecret,
+                    config.RedirectUrl
+                );
+
+                if (config.Stateless)
+                {
+                    githubProvider.Stateless();
+                }
+
+                if (config.UsesPkce)
+                {
+                    githubProvider.WithPkce();
+                }
+
+                if (config.Parameters.Count > 0)
+                {
+                    githubProvider.With(config.Parameters);
+                }
+
+                return githubProvider;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(provider), provider, "Unsupported provider, please register a custom driver.");
+        }
     }
 
     /// <inheritdoc />
