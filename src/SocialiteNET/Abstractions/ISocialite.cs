@@ -33,6 +33,7 @@ public interface ISocialite
     /// <returns>Provider instance</returns>
     /// <exception cref="ArgumentNullException">Thrown when config is null</exception>
     /// <exception cref="ArgumentException">Thrown when required config properties are missing</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when provider is not supported</exception>
     IProvider BuildProvider(ProviderEnum provider, ProviderConfig config);
 
     /// <summary>

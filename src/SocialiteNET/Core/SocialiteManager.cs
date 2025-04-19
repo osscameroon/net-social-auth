@@ -170,7 +170,7 @@ public class SocialiteManager : ISocialite
 
                 return githubProvider;
             default:
-                throw new ArgumentOutOfRangeException(nameof(provider), provider, null);
+                throw new ArgumentOutOfRangeException(nameof(provider), provider, "Unsupported provider, please register a custom driver.");
         }
     }
 
